@@ -9,6 +9,12 @@ Memoery 32M
 
 Ubuntu 17.10
 
+NVIDIA binary driver - version 384.98
+
+CUDA Libraries 9.0 176
+
+cuDNN runtime libraries 7.0.4 31
+
 
 
 = CUPY...GITHUB Latest commit d6a22f2  
