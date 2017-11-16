@@ -1,0 +1,87 @@
+XXXXXX:~/work/chainer/chainer/examples/dcgan$ python3 train_dcgan.py --gpu 0
+/usr/local/lib/python3.6/dist-packages/cupy-3.0.0a1-py3.6-linux-x86_64.egg/cupy/core/fusion.py:659: FutureWarning: cupy.core.fusion is experimental. The interface can change in the future.
+  util.experimental('cupy.core.fusion')
+GPU: 0
+# Minibatch-size: 50
+# n_hidden: 100
+# epoch: 1000
+
+Exception ignored in: <bound method PooledMemory.free of <cupy.cuda.memory.PooledMemory object at 0x7f9580ab5898>>
+Traceback (most recent call last):
+  File "cupy/cuda/memory.pyx", line 481, in cupy.cuda.memory.PooledMemory.free
+AttributeError: 'PooledMemory' object has no attribute 'ptr'
+Exception in main training loop: <class 'cupy.cuda.memory.PooledMemory'> returned a result with an error set
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/training/trainer.py", line 299, in run
+    update()
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/training/updater.py", line 223, in update
+    self.update_core()
+  File "/home/dai/work/chainer/chainer/examples/dcgan/updater.py", line 41, in update_core
+    y_real = dis(x_real)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 78, in __call__
+    h = add_noise(x)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 16, in add_noise
+    return h + sigma * xp.random.randn(*h.shape)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/functions/math/basic_math.py", line 179, in add
+    return AddConstant(rhs).apply((self,))[0]
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/function_node.py", line 245, in apply
+    outputs = self.forward(in_data)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/functions/math/basic_math.py", line 163, in forward
+    value = _preprocess_const(x[0], self.value)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/functions/math/basic_math.py", line 48, in _preprocess_const
+    return utils.force_type(x.dtype, value)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/utils/__init__.py", line 34, in force_type
+    return value.astype(dtype, copy=False)
+  File "cupy/core/core.pyx", line 276, in cupy.core.core.ndarray.astype
+  File "cupy/core/core.pyx", line 348, in cupy.core.core.ndarray.astype
+  File "cupy/core/core.pyx", line 95, in cupy.core.core.ndarray.__init__
+  File "cupy/cuda/memory.pyx", line 441, in cupy.cuda.memory.alloc
+  File "cupy/cuda/memory.pyx", line 915, in cupy.cuda.memory.MemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 936, in cupy.cuda.memory.MemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 693, in cupy.cuda.memory.SingleDeviceMemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 759, in cupy.cuda.memory.SingleDeviceMemoryPool._malloc
+Will finalize trainer extensions and updater before reraising the exception.
+Traceback (most recent call last):
+  File "cupy/cuda/driver.pyx", line 72, in cupy.cuda.driver.check_status
+cupy.cuda.driver.CUDADriverError: CUDA_ERROR_INVALID_VALUE: invalid argument
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "train_dcgan.py", line 117, in <module>
+    main()
+  File "train_dcgan.py", line 113, in main
+    trainer.run()
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/training/trainer.py", line 313, in run
+    six.reraise(*sys.exc_info())
+  File "/usr/lib/python3/dist-packages/six.py", line 693, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/training/trainer.py", line 299, in run
+    update()
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/training/updater.py", line 223, in update
+    self.update_core()
+  File "/home/dai/work/chainer/chainer/examples/dcgan/updater.py", line 41, in update_core
+    y_real = dis(x_real)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 78, in __call__
+    h = add_noise(x)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 16, in add_noise
+    return h + sigma * xp.random.randn(*h.shape)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/functions/math/basic_math.py", line 179, in add
+    return AddConstant(rhs).apply((self,))[0]
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/function_node.py", line 245, in apply
+    outputs = self.forward(in_data)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/functions/math/basic_math.py", line 163, in forward
+    value = _preprocess_const(x[0], self.value)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/functions/math/basic_math.py", line 48, in _preprocess_const
+    return utils.force_type(x.dtype, value)
+  File "/usr/local/lib/python3.6/dist-packages/chainer-4.0.0a1-py3.6.egg/chainer/utils/__init__.py", line 34, in force_type
+    return value.astype(dtype, copy=False)
+  File "cupy/core/core.pyx", line 276, in cupy.core.core.ndarray.astype
+  File "cupy/core/core.pyx", line 348, in cupy.core.core.ndarray.astype
+  File "cupy/core/core.pyx", line 95, in cupy.core.core.ndarray.__init__
+  File "cupy/cuda/memory.pyx", line 441, in cupy.cuda.memory.alloc
+  File "cupy/cuda/memory.pyx", line 915, in cupy.cuda.memory.MemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 936, in cupy.cuda.memory.MemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 693, in cupy.cuda.memory.SingleDeviceMemoryPool.malloc
+  File "cupy/cuda/memory.pyx", line 759, in cupy.cuda.memory.SingleDeviceMemoryPool._malloc
+SystemError: <class 'cupy.cuda.memory.PooledMemory'> returned a result with an error set
