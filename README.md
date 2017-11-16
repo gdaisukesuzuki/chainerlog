@@ -3,7 +3,7 @@
 
 CPU i7-8700k
 
-GPU GTX1080
+GPU GTX1080 x 1
 
 Memoery 32M
 
