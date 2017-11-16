@@ -1,3 +1,27 @@
+----------------------------------------------
+Check "import chainer"
+----------------------------------------------
+XXXXXX:~/work/edward/edward$ python3
+Python 3.6.3 (default, Oct  3 2017, 21:45:48) 
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import chainer as ch
+/usr/local/lib/python3.6/dist-packages/cupy-3.0.0a1-py3.6-linux-x86_64.egg/cupy/core/fusion.py:659: FutureWarning: cupy.core.fusion is experimental. The interface can change in the future.
+  util.experimental('cupy.core.fusion')
+>>> ch.__version__
+'4.0.0a1'
+>>> ch.cuda.available
+True
+>>> ch.cuda.cudnn_enabled
+True
+
+
+
+
+
+----------------------------------------------
+Run "chainer's sample program"
+----------------------------------------------
 XXXXXX:~/work/chainer/chainer/examples/dcgan$ python3 train_dcgan.py --gpu 0
 /usr/local/lib/python3.6/dist-packages/cupy-3.0.0a1-py3.6-linux-x86_64.egg/cupy/core/fusion.py:659: FutureWarning: cupy.core.fusion is experimental. The interface can change in the future.
   util.experimental('cupy.core.fusion')
