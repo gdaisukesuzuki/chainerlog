@@ -11,6 +11,6 @@ Ubuntu 17.10
 
 
 
-CUPY...GITHUB Latest commit d6a22f2  
+= CUPY...GITHUB Latest commit d6a22f2  
 
-CHAINER...GITHUB Latest commit 77729c7  
+= CHAINER...GITHUB Latest commit 77729c7  
