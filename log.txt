@@ -109,3 +109,74 @@ Traceback (most recent call last):
   File "cupy/cuda/memory.pyx", line 693, in cupy.cuda.memory.SingleDeviceMemoryPool.malloc
   File "cupy/cuda/memory.pyx", line 759, in cupy.cuda.memory.SingleDeviceMemoryPool._malloc
 SystemError: <class 'cupy.cuda.memory.PooledMemory'> returned a result with an error set
+
+
+----------------------------------------------
+Run "chainer's sample program2" added 11/21/2017
+----------------------------------------------
+
+
+XXXXXX:~/work/chainer/chainer/examples/dcgan$ python3 train_dcgan.py --gpu 0 --seed 63913
+/usr/local/lib/python3.6/dist-packages/cupy/core/fusion.py:659: FutureWarning: cupy.core.fusion is experimental. The interface can change in the future.
+  util.experimental('cupy.core.fusion')
+GPU: 0
+# Minibatch-size: 50
+# n_hidden: 100
+# epoch: 1000
+
+Exception in main training loop: CURAND_STATUS_ALLOCATION_FAILED
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/chainer/training/trainer.py", line 299, in run
+    update()
+  File "/usr/local/lib/python3.6/dist-packages/chainer/training/updater.py", line 223, in update
+    self.update_core()
+  File "/home/dai/work/chainer/chainer/examples/dcgan/updater.py", line 41, in update_core
+    y_real = dis(x_real)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 78, in __call__
+    h = add_noise(x)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 16, in add_noise
+    return h + sigma * xp.random.randn(*h.shape)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/sample.py", line 59, in randn
+    return distributions.normal(size=size, dtype=dtype)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/distributions.py", line 93, in normal
+    x = rs.normal(0, 1, size, dtype)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/generator.py", line 102, in normal
+    return self._generate_normal(func, size, dtype, loc, scale)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/generator.py", line 65, in _generate_normal
+    func(self._generator, out.data.ptr, out.size, *args)
+  File "cupy/cuda/curand.pyx", line 174, in cupy.cuda.curand.generateNormalDouble
+  File "cupy/cuda/curand.pyx", line 183, in cupy.cuda.curand.generateNormalDouble
+  File "cupy/cuda/curand.pyx", line 83, in cupy.cuda.curand.check_status
+Will finalize trainer extensions and updater before reraising the exception.
+Traceback (most recent call last):
+  File "train_dcgan.py", line 117, in <module>
+    main()
+  File "train_dcgan.py", line 113, in main
+    trainer.run()
+  File "/usr/local/lib/python3.6/dist-packages/chainer/training/trainer.py", line 313, in run
+    six.reraise(*sys.exc_info())
+  File "/usr/lib/python3/dist-packages/six.py", line 693, in reraise
+    raise value
+  File "/usr/local/lib/python3.6/dist-packages/chainer/training/trainer.py", line 299, in run
+    update()
+  File "/usr/local/lib/python3.6/dist-packages/chainer/training/updater.py", line 223, in update
+    self.update_core()
+  File "/home/dai/work/chainer/chainer/examples/dcgan/updater.py", line 41, in update_core
+    y_real = dis(x_real)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 78, in __call__
+    h = add_noise(x)
+  File "/home/dai/work/chainer/chainer/examples/dcgan/net.py", line 16, in add_noise
+    return h + sigma * xp.random.randn(*h.shape)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/sample.py", line 59, in randn
+    return distributions.normal(size=size, dtype=dtype)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/distributions.py", line 93, in normal
+    x = rs.normal(0, 1, size, dtype)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/generator.py", line 102, in normal
+    return self._generate_normal(func, size, dtype, loc, scale)
+  File "/usr/local/lib/python3.6/dist-packages/cupy/random/generator.py", line 65, in _generate_normal
+    func(self._generator, out.data.ptr, out.size, *args)
+  File "cupy/cuda/curand.pyx", line 174, in cupy.cuda.curand.generateNormalDouble
+  File "cupy/cuda/curand.pyx", line 183, in cupy.cuda.curand.generateNormalDouble
+  File "cupy/cuda/curand.pyx", line 83, in cupy.cuda.curand.check_status
+cupy.cuda.curand.CURANDError: CURAND_STATUS_ALLOCATION_FAILED
+XXXXX:~/work/chainer/chainer/examples/dcgan$ 
